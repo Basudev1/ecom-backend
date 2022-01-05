@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
+// const productRouter = require("./routes/product");
+// const cartRouter = require("./routes/cart");
+// const orderRouter = require("./routes/order");
 //connect db
 const connectDB = require("./db/connect");
 //Error Handler Middleware
@@ -14,7 +17,10 @@ const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.use(express.json());
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/cart", authenticateUser, userRouter);
+app.use("/api/v1/users", userRouter);
+// app.use("/api/v1/products", productRouter);
+// app.use("/api/v1/cart", cartRouter);
+// app.use("/api/v1/orders", orderRouter);
 
 //using middleware
 app.use(notFoundMiddleware);
