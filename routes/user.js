@@ -1,20 +1,28 @@
 const User = require("../models/User");
 const {
   verifyToken,
-  verifyTokenAndAuthorization,
+  verfifyTokenandAuthorize,
   verifyTokenAndAdmin,
 } = require("./verifyToken");
-const { getAllUsers, getUser } = require("../controllers/user");
+const {
+  getAllUsers,
+  getUser,
+  deleteUser,
+  updateUser,
+} = require("../controllers/user");
 
 const router = require("express").Router();
 
 //GET all users
 router.get("/", verifyTokenAndAdmin, getAllUsers);
+//Get user by id
 router.get("/:id", verifyTokenAndAdmin, getUser);
 
-//Get user by id
-
 //delete user by id
+router.delete("/:id", verifyTokenAndAdmin, deleteUser);
+
+//update user by id:
+// router.put("/:id", verfifyTokenandAuthorize, updateUser);
 
 //overall user status
 
