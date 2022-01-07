@@ -25,7 +25,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/orders", orderRouter);
-app.use("/checkout", payRouter);
+app.use("/api/v1/checkout", payRouter);
 
 //using middleware
 app.use(notFoundMiddleware);
