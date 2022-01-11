@@ -1,4 +1,6 @@
 const Order = require("../models/Order");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const {
   verifyToken,
   verfifyTokenandAuthorize,
@@ -58,9 +60,15 @@ router.get("/find/:userId", verifyTokenAndAdmin, async (req, res) => {
 
 // //GET ALL
 
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
+router.get("/", verfifyTokenandAuthorize, async (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader;
+  // console.log(token);
   try {
-    const orders = await Order.find();
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    // console.log(payload);
+    userId = payload.userId;
+    const orders = await Order.find({ userId });
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json(err);
