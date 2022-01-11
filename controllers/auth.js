@@ -35,7 +35,12 @@ const login = async (req, res) => {
   const token = user.createJWT();
   res
     .status(StatusCodes.OK)
-    .json({ user: { username: user.username }, isAdmin: user.isAdmin, token });
+    .json({
+      user: { username: user.username },
+      userId: user._id,
+      isAdmin: user.isAdmin,
+      token,
+    });
 };
 
 module.exports = { register, login };
