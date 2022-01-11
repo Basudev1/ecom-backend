@@ -10,6 +10,12 @@ const OrderSchema = new mongoose.Schema(
         productid: {
           type: String,
         },
+        title: {
+          type: String,
+        },
+        img: {
+          type: String,
+        },
         quantity: {
           type: Number,
           default: 1,
