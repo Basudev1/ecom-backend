@@ -45,7 +45,7 @@ router.post("/payment", (req, res) => {
       res.send("Success"); // If no error occurs
     })
     .catch((err) => {
-      res.send(err); // If some error occurs
+      res.send("Something Went Wrong"); // If some error occurs
     });
 });
 
